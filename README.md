@@ -8,4 +8,4 @@ A repository to keep track all the practice projects
 
 ## Tailwind
 
-1. Acme Rockets HTML webbsite
+1. Acme Rockets HTML website. Hosted at: https://acme-rockets-ww3g.onrender.com
