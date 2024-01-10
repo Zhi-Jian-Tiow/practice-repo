@@ -311,12 +311,29 @@ public class MedicalAppointment
 }
 ```
 
+**Virtual Keyword
+- **Virtual** methods or properties may be **overridden** by the inheriting types
+- Virtual members cannot have private access modifier
+```c#
+public class Ingredient
+{
+    public virtual string Name { get; } = "Some ingredient";
+}
+
+// Cheddar class overrides the Name property of the inherited class
+public class Cheddar : Ingredient
+{
+    public override string Name => "Cheddar cheese";
+}
+```
+
 ### Inheritance
 - Inheritance enables us to create new classes that **reuse**, **extend**, and **modify** the behavior defined in other classes
 - Inheritance is an **"is-a"** kind of relationship (ex, Cheddar is a type of ingredient)
 - The base class consists of **common** methods or data to any of its derived types
 - A derived type can contain members that the base class or other classes do not contain
 - Fields that are public or protected within the base class are also inherited by the derived class (note that the value will be independent depending on instance class)
+- C# does not support multiple inheritance
 
 ```c#
 // base class
@@ -334,6 +351,31 @@ public class Cheddar : Ingredient
 }
 ```
 
+**base Keyword**
+- The base keyword refers to the inherited class (base class)
+- We use the base keyword to refer to the base class constructor or base class members
+```c#
+public class Ingredient
+{   
+    public int PriceIfExtraTopping { get; }
+    public Ingredient(int priceIfExtraTopping)
+    {
+        PriceIfExtraTopping = priceIfExtraTopping;
+        Console.WriteLine("Constructor from the Ingredient class");
+    }
+
+    public virtual string Name { get; } = "Some ingredient";
+}
+
+public class Cheddar : Ingredient
+{
+    public Cheddar(int priceIfExtraTopping) : base(priceIfExtraTopping)
+    {
+        Console.WriteLine("Constructor from the Cheddar class");
+    }
+    public override string Name => "Cheddar cheese";
+}
+```
 
 
 ### Static Methods & Classes
@@ -351,10 +393,105 @@ public class Cheddar : Ingredient
 - We can directly assign a value to a static field/property, or we could use a static constructor to assign the value like a normal constructor
 - Static constructor does not have access modifier, it only has a static keyword
 
+### Implicit and Explicit Type Conversion
+- **Implicit conversion** can only happen if conversion from one type to another is **safe** and **no data loss**
+- **Explicit conversion** is risky and may lead to error (due to data loss) - this will cause an exception if casting fails
+```c#
+// implicit conversion (a decimal number can represent any integer)
+int integer = 10;
+double a = integer;
+
+// explicit conversion (conversion will trim the data)
+decimal c = 10.01m;
+int d = (int) c;
+```
+
+** Upcasting & Downcasting**
+- Upcasting = when converting a derived class to the base class (can be done with implicit conversion)
+- Downcasting = when converting a base type to one of its derived classes (must use explicit conversion)
+
+** is operator**
+- Use to check if some object is of a given type
+
+**as operator**
+- We can perform explicit conversion with the **as operator**
+- Using as operator will give **null** if casting fails
+- as operator only works with **nullable** type
+```c#
+Ingredient ingredient = new Ingredient();
+Cheddar cheddar = ingredient as Cheddar;
+public class Ingredient
+{
+
+}
+
+public class Cheddar : Ingredient
+{
+
+}
+```
+
+### Abstract Class
+- **Abstract classes cannot be instantiated**. They only serve as **base classes** for other more concrete type
+- Abstract classes can have abstract methods and abstract properties
+- Can contain non-abstract methods 
+```c#
+public abstract class Ingredient
+{
+    public abstract void Prepare();
+}
+
+public class Cheddar : Ingredient
+{
+    public override void Prepare() => Console.WriteLine("Slice thinly and place on top of pizza.");
+}
+```
+
+**Abstract Methods**
+- Can only be defined in **abstract classes**
+- Abstract methods **do not have implementation**
+- All abstract methods are implicitly virtual (must be **overridden by non-abstract derived class**)
+
+### Sealed Classes
+- Prevent a class or method from being inherited/overridden
+- Only **virtual methods** can be sealed
+- **Static classes** are implicitly sealed
+```c#
+public class Cheddar : Ingredient
+{
+    public sealed override void Prepare() => Console.WriteLine("Slice thinly and place on top of pizza.");
+}
+
+public class SpecialCheddar : Cheddar
+{
+    // Would show compilation error because this method is sealed
+    public override void Prepare()
+    {
+
+    }
+}
+```
+
+### Interfaces
+- Interfaces are used to define a base class for classes that are exposed to methods with the same signature
+- Interfaces create a **"behave-like"** kind of relationship between types
+- Interfaces cannot be instantiated
+- All methods within an interface are implicitly virtual and have public access modifier 
 
 
+### Interfaces vs Abstract Classes
+**Interface**
+- Defines the set of operations that the implementing type must provide
+- Does not provide methods implementations
+- Does not contain any data
+- Interface is an abstraction of behaviour, which defines what an object can do
+- Methods cannot be sealed or static
+- Can only contain methods or properties definitions
 
-
-
-
-
+**Abstract Classes**
+- A blueprint for derived classes, representing a general category of things
+- May provide implementations in non-abstract methods. Can also have abstract methods
+- Can contain data
+- Abstract class is an abstraction over alikeness, which defines what an object is
+- Can contain sealed or static methods
+- Can have implementations, fields and constructors
