@@ -1,0 +1,14 @@
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.AssemblyInfoInputs.cache
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.AssemblyInfo.cs
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.csproj.CoreCompileInputs.cache
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\bin\Debug\net8.0\CookieCookBook.exe
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\bin\Debug\net8.0\CookieCookBook.deps.json
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\bin\Debug\net8.0\CookieCookBook.runtimeconfig.json
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\bin\Debug\net8.0\CookieCookBook.dll
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\bin\Debug\net8.0\CookieCookBook.pdb
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.dll
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\refint\CookieCookBook.dll
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.pdb
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\CookieCookBook.genruntimeconfig.cache
+C:\Users\aaron\Documents\Self-Learning\C#\Ultimate C# Masterclass - Section 4 Assignment\Ultimate C# Masterclass - Section 4 Assignment\obj\Debug\net8.0\ref\CookieCookBook.dll
