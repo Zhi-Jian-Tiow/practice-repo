@@ -94,6 +94,154 @@ List<int> GetOnlyPositive(
   }
 }
 ```
+## Exception Handling
+### 3 Main Errors in Programming
+- Compilation Error
+- Runtime Error
+- Logical Error
+
+### Runtime Error
+- Represented as **exception**
+- Exceptions are **objects** in C#
+- All exceptions are derived from the **System.Exception** base class
+
+### Syntax for Exception Handling in C#
+```c#
+Console.WriteLine("Enter a number:");
+string input = Console.ReadLine();
+try
+{
+    int number = int.Parse(input);
+    Console.WriteLine("String successfully parsed");
+}
+catch(Exception ex)
+{
+    Console.WriteLine($"An exception was thrown. Exception message: {ex.Message}");
+}
+finally
+{
+    Console.WriteLine("Finally block is being executed");
+}
+```
+- Only use local try blocks when we truly see a risk of an error-causing situation and if we **can actually handle** it
+
+### Throwing Exceptions
+- It makes sense to **throw an exception** when:
+  1. We cannot handle invalid input reasonably
+  2. Invalid input is the developer's mistake
+```c#
+public class Person
+{
+    public string Name { get; }
+    public int YearOfBirth { get; }
+
+    public Person(string name, int yearOfBirth)
+    {
+        if (name == string.Empty)
+        {
+            throw new Exception("The name cannot be empty.");
+        }
+        if (yearOfBirth < 1900 || yearOfBirth > DateTime.Now.Year)
+        {
+            throw new Exception("The year of birth must be between 1900 and the current year."); 
+        }
+        Name = name;
+        YearOfBirth = yearOfBirth;
+    }
+}
+```
+
+### Common Built-In Exception
+1. ArgumentException - Use when the argument passed in is not null, but invalid
+2. ArgumentNullException - Use when the argument passed in is null
+3. ArgumentOutOfRange - when the argument passed in is out of a certain range
+4. InvalidOperationException
+5. NotImplementedException
+6. StackOverflowException
+
+### Rethrowing Exceptions
+- Rethrowing exceptions is useful when we want to perform some **additional steps**, for example, **show some message** to the user or write the information about the issue in some **logs**
+- **throw ex** - Does not preserve the stack trace. We will lose the information about the first place from which the exception was thrown
+- **throw** - Preserves the stack trace, which means the stack trace will point to the method that caused the exception **in the first place**.
+```c#
+bool IsFirstElementPositive(IEnumerable<int> numbers)
+{
+    try
+    {
+        int firstElement = numbers.First();
+        return firstElement > 0;
+    }
+    catch (InvalidOperationException ex) 
+    {
+        Console.WriteLine("The collection is empty!");
+        return true;
+    }
+    catch (NullReferenceException ex)
+    {
+        Console.WriteLine("Sorry! The application experienced an unexpected error.");
+        throw ex; // rethrowing exception (not recommended)
+        throw; (recommended way)
+    }
+}
+```
+
+### Exception Filters
+```c#
+try
+{
+    var dataFromWeb = SendHttpRequest("http:/someaddress/");
+}
+catch(HttpRequestException ex) when (ex.Message == "403")
+{
+    Console.WriteLine("It was forbidden to access the resource.");
+    throw;
+}
+catch (HttpRequestException ex) when (ex.Message == "404")
+{
+    Console.WriteLine("The resource was not found.");
+    throw;
+}
+catch (HttpRequestException ex) when (ex.Message == "500")
+{
+    Console.WriteLine("The server has experienced an internal error.");
+    throw;
+}  
+```
+
+### Defining Custom Exception
+**When to define custom exception class**
+- We should follow the **Principle of Least Surprise** - The code should behave in a way that most users will expect it to behave
+- Complex processes where built-in exception are not enough to explain the error
+- 
+```c#
+public class CustomException : Exception
+{
+    public int StatusCode {  get; }
+    public CustomException()
+    {
+
+    }
+    public CustomException(string message, int statusCode) : base(message)
+    {
+        StatusCode = statusCode;
+    }
+
+    public CustomException(string message) : base(message)
+    {
+
+    }
+    public CustomException(string message, Exception innerException) : base(message, innerException)
+    {
+
+    }
+
+    public CustomException(string message, Exception innerException, int statusCode) : base(message, innerException)
+    {
+        StatusCode = statusCode;
+    }
+}
+```
+
 
 ## Object-Oriented Programming (OOP) in C#
 #### The need for OOP
