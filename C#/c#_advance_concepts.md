@@ -11,7 +11,7 @@ Func<int, DateTime, string, decimal> someFunc; // this variable can be assigned 
 **Action**
 - Use **Action** type for **void functions**
 ```c#
-Action<string, string, bool> someAction; // this variable can represent any void functions that takes in two string parameters and return a boolean
+Action<string, string, bool> someAction; // this variable can represent any void functions that takes in two string parameters and a boolean
 ```
 
 **Example**
